@@ -59,7 +59,7 @@ const Index = () => {
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="max-w-7xl mx-auto"
+        className="max-w-7xl mx-auto relative"
       >
         <header className="text-center mb-12">
           <motion.h1
@@ -151,6 +151,15 @@ const Index = () => {
             </motion.div>
           </div>
         )}
+
+        <div className="fixed bottom-4 right-4 flex items-center space-x-2">
+          <p className="text-space-white text-sm">unban Alaskan :)</p>
+          <img 
+            src="/lovable-uploads/8f7980f8-322e-4b7a-892b-89f388140ecc.png" 
+            alt="Alaskan" 
+            className="w-12 h-12 rounded-full"
+          />
+        </div>
       </motion.div>
     </div>
   );
