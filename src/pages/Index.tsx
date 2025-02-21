@@ -18,17 +18,20 @@ const Index = () => {
 
   const handleAddToFleet = () => {
     if (selectedShip && selectedClass) {
-      // In a real app, we would fetch the actual DPS from an API
-      const mockDps = Math.floor(Math.random() * 1000) + 500; // Mock DPS for demonstration
+      const shipData = shipClasses
+        .find(sc => sc.name === selectedClass)
+        ?.ships.find(s => s.name === selectedShip);
       
-      setFleet([
-        ...fleet,
-        {
-          name: selectedShip,
-          class: selectedClass,
-          dps: mockDps,
-        },
-      ]);
+      if (shipData) {
+        setFleet([
+          ...fleet,
+          {
+            name: shipData.name,
+            class: selectedClass,
+            dps: shipData.dps,
+          },
+        ]);
+      }
       
       setSelectedShip(null);
     }
@@ -86,15 +89,15 @@ const Index = () => {
                 .find((sc) => sc.name === selectedClass)
                 ?.ships.map((ship) => (
                   <button
-                    key={ship}
-                    onClick={() => setSelectedShip(ship)}
+                    key={ship.name}
+                    onClick={() => setSelectedShip(ship.name)}
                     className={`p-3 rounded text-sm transition-all ${
-                      selectedShip === ship
+                      selectedShip === ship.name
                         ? "bg-space-accent text-white"
                         : "bg-space-purple/20 hover:bg-space-purple/30 text-space-white/90"
                     }`}
                   >
-                    {ship}
+                    {ship.name} ({ship.dps} DPS)
                   </button>
                 ))}
             </div>
