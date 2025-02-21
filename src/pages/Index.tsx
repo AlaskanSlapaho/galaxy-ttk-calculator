@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import ShipClassCard from "@/components/ShipClassCard";
 import Fleet from "@/components/Fleet";
+import TargetSelector from "@/components/TargetSelector";
 import { shipClasses } from "@/data/shipClasses";
 
 interface Ship {
@@ -15,6 +16,7 @@ const Index = () => {
   const [selectedClass, setSelectedClass] = useState<string | null>(null);
   const [selectedShip, setSelectedShip] = useState<string | null>(null);
   const [fleet, setFleet] = useState<Ship[]>([]);
+  const [timeToKill, setTimeToKill] = useState<number | null>(null);
 
   const handleAddToFleet = () => {
     if (selectedShip && selectedClass) {
@@ -39,6 +41,17 @@ const Index = () => {
 
   const handleRemoveShip = (index: number) => {
     setFleet(fleet.filter((_, i) => i !== index));
+    setTimeToKill(null);
+  };
+
+  const calculateTimeToKill = (targetHealth: number) => {
+    const totalDps = fleet.reduce((sum, ship) => sum + ship.dps, 0);
+    if (totalDps === 0) {
+      setTimeToKill(0);
+      return;
+    }
+    const ttk = targetHealth / totalDps;
+    setTimeToKill(ttk);
   };
 
   return (
@@ -97,7 +110,7 @@ const Index = () => {
                         : "bg-space-purple/20 hover:bg-space-purple/30 text-space-white/90"
                     }`}
                   >
-                    {ship.name} ({ship.dps} DPS)
+                    {ship.name}
                   </button>
                 ))}
             </div>
@@ -115,13 +128,28 @@ const Index = () => {
         )}
 
         {fleet.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="mt-8"
-          >
-            <Fleet ships={fleet} onRemoveShip={handleRemoveShip} />
-          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <Fleet ships={fleet} onRemoveShip={handleRemoveShip} />
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <TargetSelector onCalculate={calculateTimeToKill} />
+              {timeToKill !== null && (
+                <div className="mt-4 p-4 bg-space-purple/20 rounded-lg">
+                  <p className="text-space-white">
+                    Time to Kill: <span className="font-bold">{timeToKill.toFixed(2)} seconds</span>
+                  </p>
+                </div>
+              )}
+            </motion.div>
+          </div>
         )}
       </motion.div>
     </div>
