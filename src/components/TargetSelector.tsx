@@ -38,11 +38,11 @@ const TargetSelector = ({ onCalculate }: TargetSelectorProps) => {
           <select
             value={selectedClass}
             onChange={(e) => setSelectedClass(e.target.value)}
-            className="w-full bg-space-purple/20 text-space-white border border-space-purple/30 rounded-lg p-2"
+            className="w-full bg-space-purple/20 text-space-white border border-space-purple/30 rounded-lg p-2 [&>option]:bg-space-purple/20"
           >
-            <option value="">Select a class</option>
+            <option value="" className="bg-space-purple/20 text-space-white">Select a class</option>
             {shipClasses.map((sc) => (
-              <option key={sc.name} value={sc.name}>
+              <option key={sc.name} value={sc.name} className="bg-space-purple/20 text-space-white">
                 {sc.name}
               </option>
             ))}
@@ -56,12 +56,12 @@ const TargetSelector = ({ onCalculate }: TargetSelectorProps) => {
           <select
             value={selectedShip}
             onChange={(e) => setSelectedShip(e.target.value)}
-            className="w-full bg-space-purple/20 text-space-white border border-space-purple/30 rounded-lg p-2"
+            className="w-full bg-space-purple/20 text-space-white border border-space-purple/30 rounded-lg p-2 [&>option]:bg-space-purple/20"
             disabled={!selectedClass}
           >
-            <option value="">Select a ship</option>
+            <option value="" className="bg-space-purple/20 text-space-white">Select a ship</option>
             {availableShips.map((ship) => (
-              <option key={ship} value={ship}>
+              <option key={ship} value={ship} className="bg-space-purple/20 text-space-white">
                 {ship}
               </option>
             ))}
