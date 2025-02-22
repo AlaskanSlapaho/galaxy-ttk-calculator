@@ -6,7 +6,10 @@ export interface ShipData {
 
 export const superCapitals: ShipData[] = [
   { name: "Theia", dps: 701 },
+  { name: "Thubjugator", dps: 679 },
   { name: "Prototype X-2", dps: 570 },
+  { name: "Kneall Prototype", dps: 570 },
+  { name: "Kneall Eradicator", dps: 570 },
   { name: "Hyperion", dps: 445 },
   { name: "Lucifer", dps: 418 },
   { name: "Prototype X-1", dps: 418 },
