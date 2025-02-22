@@ -1,5 +1,14 @@
 
-interface ShipData {
+import { frigates } from './ships/frigates';
+import { destroyers } from './ships/destroyers';
+import { cruisers } from './ships/cruisers';
+import { battlecruisers } from './ships/battlecruisers';
+import { battleships } from './ships/battleships';
+import { dreadnoughts } from './ships/dreadnoughts';
+import { carriers } from './ships/carriers';
+import { superCapitals } from './ships/superCapitals';
+
+export interface ShipData {
   name: string;
   dps: number;
 }
@@ -8,235 +17,41 @@ export const shipClasses = [
   {
     name: "Frigate",
     description: "Light and agile combat vessels",
-    ships: [
-      { name: "Blue Torp Wasp", dps: 178 },
-      { name: "Double Fractal", dps: 169 },
-      { name: "Spiderblade", dps: 153 },
-      { name: "Macross", dps: 138 },
-      { name: "Dragon", dps: 137 },
-      { name: "Zhanado", dps: 123 },
-      { name: "Oppressor", dps: 117 },
-      { name: "Abyss", dps: 107 },
-      { name: "Starblade", dps: 107 },
-      { name: "Ishkur", dps: 104 },
-      { name: "Raven", dps: 102 },
-      { name: "Avenger", dps: 90 },
-      { name: "Osprey", dps: 86 },
-      { name: "Draco", dps: 85 },
-      { name: "Viper", dps: 85 },
-      { name: "Python", dps: 82 },
-      { name: "Archangel", dps: 80 },
-      { name: "Spider", dps: 74 },
-      { name: "Worm", dps: 61 },
-      { name: "Arrow", dps: 50 }
-    ]
+    ships: frigates
   },
   {
     name: "Destroyer",
     description: "Versatile combat ships with balanced capabilities",
-    ships: [
-      { name: "Viking", dps: 200 },
-      { name: "Permafrost", dps: 195 },
-      { name: "Prikkit", dps: 184 },
-      { name: "Retro Centurion", dps: 180 },
-      { name: "Centurion", dps: 151 },
-      { name: "Leecher", dps: 131 },
-      { name: "Lich", dps: 127 },
-      { name: "Scimitar", dps: 127 },
-      { name: "Starfall", dps: 127 },
-      { name: "Cobra", dps: 126 },
-      { name: "Meteor", dps: 126 },
-      { name: "Apostle", dps: 125 },
-      { name: "Crucible", dps: 121 },
-      { name: "Ibis", dps: 117 },
-      { name: "Sabre Tooth", dps: 117 },
-      { name: "Corvid", dps: 115 },
-      { name: "Scythe", dps: 114 },
-      { name: "Phantom", dps: 107 },
-      { name: "Zero", dps: 106 },
-      { name: "Argosy", dps: 106 },
-      { name: "Defiance", dps: 98 },
-      { name: "Chimera", dps: 92 },
-      { name: "Dropship", dps: 71 }
-    ]
+    ships: destroyers
   },
   {
     name: "Cruiser",
     description: "Medium-sized vessels with impressive firepower",
-    ships: [
-      { name: "2020 Ship", dps: 270 },
-      { name: "Retro Sixfold", dps: 229 },
-      { name: "Revenge", dps: 189 },
-      { name: "Constantine", dps: 181 },
-      { name: "Retro Gideon", dps: 174 },
-      { name: "Sixfold", dps: 173 },
-      { name: "Lusso", dps: 171 },
-      { name: "Banshee", dps: 169 },
-      { name: "Coldfront", dps: 162 },
-      { name: "Aura", dps: 160 },
-      { name: "Ghost", dps: 157 },
-      { name: "Dramiel", dps: 155 },
-      { name: "Inquisitor", dps: 153 },
-      { name: "Nidhogg", dps: 152 },
-      { name: "Gryphon", dps: 151 },
-      { name: "Sentinel", dps: 150 },
-      { name: "Nova", dps: 148 },
-      { name: "Invictus", dps: 143 },
-      { name: "Gunslinger", dps: 143 },
-      { name: "Reaver", dps: 142 },
-      { name: "Spectre", dps: 142 },
-      { name: "Gideon", dps: 135 },
-      { name: "Vampire X-R4", dps: 132 },
-      { name: "Orion", dps: 130 },
-      { name: "Xenon", dps: 121 },
-      { name: "Templar", dps: 92 }
-    ]
+    ships: cruisers
   },
   {
     name: "Battlecruiser",
     description: "Heavy combat ships with superior firepower",
-    ships: [
-      { name: "Bombe", dps: 2333 },
-      { name: "Delta Ship", dps: 436 },
-      { name: "Frozen MLRS", dps: 303 },
-      { name: "2018", dps: 297 },
-      { name: "Retro Grievion", dps: 277 },
-      { name: "Blood Wing", dps: 274 },
-      { name: "Vigilance", dps: 266 },
-      { name: "United States of Razor", dps: 258 },
-      { name: "Venerator", dps: 255 },
-      { name: "Reaper", dps: 252 },
-      { name: "Disruptor", dps: 244 },
-      { name: "Zhen", dps: 238 },
-      { name: "Demon", dps: 229 },
-      { name: "Tengu", dps: 221 },
-      { name: "Belvat", dps: 215 },
-      { name: "Icicle", dps: 211 },
-      { name: "Orion-X", dps: 209 },
-      { name: "MLRS", dps: 207 },
-      { name: "Razor Wing", dps: 204 },
-      { name: "Hecate", dps: 194 },
-      { name: "Anathema", dps: 190 },
-      { name: "Vansnova", dps: 190 },
-      { name: "Pirated Grievion", dps: 190 },
-      { name: "IcicIe", dps: 189 },
-      { name: "Grievion", dps: 185 },
-      { name: "Marauder", dps: 183 },
-      { name: "Heartbreaker", dps: 183 },
-      { name: "<>Training Marauder<>", dps: 183 },
-      { name: "Radiance", dps: 182 },
-      { name: "Dire Wolf", dps: 179 },
-      { name: "Aeaphiel", dps: 176 },
-      { name: "Astaroth", dps: 175 },
-      { name: "Absolution", dps: 172 },
-      { name: "MLMLRS", dps: 171 },
-      { name: "Valiant", dps: 170 },
-      { name: "Hallow", dps: 168 },
-      { name: "Valkerac", dps: 162 },
-      { name: "Baby Tyrant", dps: 162 },
-      { name: "Mjolnheimr", dps: 155 },
-      { name: "Acolyte", dps: 154 },
-      { name: "Retro Bastion", dps: 151 },
-      { name: "Black Flare", dps: 150 },
-      { name: "Christmas Tree", dps: 143 },
-      { name: "Apogee", dps: 136 },
-      { name: "Bastion", dps: 126 }
-    ]
+    ships: battlecruisers
   },
   {
     name: "Battleship",
     description: "Massive warships with devastating weapons",
-    ships: [
-      { name: "Genesis", dps: 291 },
-      { name: "Hasatan", dps: 281 },
-      { name: "Panther", dps: 259 },
-      { name: "Sentaliz", dps: 245 },
-      { name: "Katana", dps: 239 },
-      { name: "Witch", dps: 231 },
-      { name: "Sovereign", dps: 227 },
-      { name: "Legionnaire", dps: 227 },
-      { name: "Jackal", dps: 226 },
-      { name: "Warden", dps: 215 },
-      { name: "Hawklight", dps: 215 },
-      { name: "Aegis", dps: 213 },
-      { name: "Loyalist", dps: 194 },
-      { name: "Nisos", dps: 181 },
-      { name: "Ampharos", dps: 180 },
-      { name: "Archeon", dps: 174 },
-      { name: "Warlock", dps: 174 },
-      { name: "Cutlass", dps: 146 }
-    ]
+    ships: battleships
   },
   {
     name: "Dreadnought",
     description: "Capital ships with extreme combat capabilities",
-    ships: [
-      { name: "Kraken", dps: 432 },
-      { name: "Avalon", dps: 384 },
-      { name: "Obliterator", dps: 374 },
-      { name: "Behemoth", dps: 339 },
-      { name: "Andromeda", dps: 315 },
-      { name: "Lazarus", dps: 286 },
-      { name: "Nemesis", dps: 285 },
-      { name: "Retribution", dps: 277 },
-      { name: "Armageddon", dps: 275 },
-      { name: "Cyclops", dps: 267 },
-      { name: "Ridgebreaker", dps: 260 },
-      { name: "Naglfar", dps: 254 },
-      { name: "Zeus", dps: 247 },
-      { name: "Tennhausen", dps: 243 },
-      { name: "Leviathan", dps: 239 },
-      { name: "Tempest", dps: 224 },
-      { name: "Sagittarius", dps: 222 },
-      { name: "Apocalypse", dps: 216 },
-      { name: "Catalyst", dps: 193 },
-      { name: "Judgement", dps: 193 }
-    ]
+    ships: dreadnoughts
   },
   {
     name: "Carrier",
     description: "Support vessels capable of deploying fighters",
-    ships: [
-      { name: "Kapisi", dps: 1263 },
-      { name: "Skeletal Ghostealis", dps: 1074 },
-      { name: "Ghoul Nyx", dps: 1031 },
-      { name: "Blizzard", dps: 996 },
-      { name: "Retro Nyx", dps: 961 },
-      { name: "Hailstorm", dps: 905 },
-      { name: "Conqueror", dps: 858 },
-      { name: "Sakala", dps: 833 },
-      { name: "Annihilator", dps: 804 },
-      { name: "Borealis", dps: 706 },
-      { name: "Alpha Ship", dps: 645 },
-      { name: "Nimitz", dps: 599 },
-      { name: "Rhino", dps: 577 },
-      { name: "Nyx", dps: 566 },
-      { name: "Revelation", dps: 555 },
-      { name: "Rapture", dps: 540 },
-      { name: "Executioner", dps: 534 },
-      { name: "Prometheus", dps: 530 },
-      { name: "Icarus", dps: 525 },
-      { name: "Stormbringer", dps: 502 },
-      { name: "Retro Vanguard", dps: 475 },
-      { name: "Hevnetier", dps: 474 },
-      { name: "Warlord", dps: 442 },
-      { name: "Vanguard", dps: 441 },
-      { name: "Waspinator", dps: 119 }
-    ]
+    ships: carriers
   },
   {
     name: "Super Capital",
     description: "The largest and most powerful vessels",
-    ships: [
-      { name: "Theia", dps: 701 },
-      { name: "Prototype X-2", dps: 570 },
-      { name: "Hyperion", dps: 445 },
-      { name: "Lucifer", dps: 418 },
-      { name: "Prototype X-1", dps: 418 },
-      { name: "Oblivion", dps: 330 },
-      { name: "Deity", dps: 328 },
-      { name: "Astraeus", dps: 278 },
-      { name: "Subjugator", dps: 265 }
-    ]
+    ships: superCapitals
   }
 ];
